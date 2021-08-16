@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Daoとxmlのマッピング -->
+<mapper namespace="com.example.demo.dao.BookDao">
+
+	<!-- 1件検索 -->
+	<select id="findById" resultType="com.example.demo.entity.Book">
+		SELECT
+		id,
+		book_name,
+		volume_num,
+		author_name,
+		register_date
+		FROM
+		booktable
+		WHERE
+		id = #{id}
+	</select>
+
+	<!-- 全件検索 -->
+	<select id="findAll" resultType="com.example.demo.entity.Book">
+		SELECT
+		id,
+		book_name,
+		volume_num,
+		author_name,
+		register_date
+		FROM
+		booktable
+	</select>
+
+	<!-- ユーザー1件登録 -->
+	<insert id="insertOne">
+		INSERT INTO booktable(
+		book_name,
+		volume_num,
+		author_name
+		)
+		VALUES(
+		#{bookName},
+		#{volumeNum},
+		#{authorName}
+		)
+	</insert>
+</mapper>

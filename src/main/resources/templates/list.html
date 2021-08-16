@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="${title}">title</title>
+<link href="/css/indexstyle.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+<body>
+	<p>つんどく管理</p>
+	<div>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>書籍名</th>
+				<th>巻/版</th>
+				<th>著者名</th>
+				<th>登録日</th>
+			</tr>
+			<tr th:each="book:${bookList}" th:object="${book}">
+				<td th:text="*{id}">id</td>
+				<td th:text="*{bookName}">書籍名</td>
+				<td th:text="*{volumeNum}">巻/版</td>
+				<td th:text="*{authorName}">著書名</td>
+				<td th:text="*{registerDate}">登録日</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
