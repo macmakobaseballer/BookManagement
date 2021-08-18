@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <!-- CSS読込 -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <!-- JS読込 -->
+  <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
 <title th:text="${title}">title</title>
 <link href="/css/registerstyle.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
@@ -8,9 +13,20 @@
 <body>
 	<p>つんどく登録</p>
 	<form th:action="register" th:object="${bookRegisterForm}" method="post">
-		<label>書籍名:<input class="input" type="text"th:field="*{bookName}"></label><br>
-		<label>巻/版 :<input class="input" type="text" th:field="*{volumeNum}"></label><br>
-		<label>著者名:<input class="input" type="text"  th:field="*{authorName}"></label><br>
+		<div class="form-group">
+			<label for="bookName" th:text="#{bookName}"></label><br>
+			<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{bookName}">
+			<div class="invalid-feedback" th:errors="*{bookName}"></div>
+		</div>
+		<div class="form-group">
+			<label for="volumeNum" th:text="#{volumeNum}"></label><br>
+			<input id="volumeNum" class="form-control" type="text" th:errorclass="is-invalid" th:field="*{volumeNum}">
+		</div>
+		<div class="form-group">
+			<label for="authorName" th:text="#{authorName}"></label><br>
+			<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{authorName}">
+			<div class="invalid-feedback" th:errors="*{authorName}"></div>
+		</div>
 		<div>
 			<input class="register" type="submit" value="1件登録">
 		</div>

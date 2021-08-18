@@ -41,13 +41,14 @@ public class RegisterController {
 	public String postBookRegister(Model model,
 			@ModelAttribute @Validated BookRegisterForm form , BindingResult bindingResult) {
 
-		Book book = modelMapper.map(form,Book.class);
-
-		bookService.insertOne(book);
-
 		if( bindingResult.hasErrors()) {
 			return getRegister(model, form);
 		}
+
+		
+		Book book = modelMapper.map(form,Book.class);
+
+		bookService.insertOne(book);
 
 		return "redirect:/book";
 	}
