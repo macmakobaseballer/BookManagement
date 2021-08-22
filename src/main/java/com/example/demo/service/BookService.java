@@ -34,6 +34,11 @@ public class BookService {
 	public void insertBookOne(Book book) {
 		bookDao.insertOne(book);
 	}
+	
+	//1件登録（ページ数登録）
+	public void insertPageOne(Book book) {
+		bookDao.insertOneStatus(book);
+	}
 		
 	//1件更新（ページ数）
 	public void updateBookOne(int id,

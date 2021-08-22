@@ -27,6 +27,11 @@
 			<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{authorName}">
 			<div class="invalid-feedback" th:errors="*{authorName}"></div>
 		</div>
+		<div class="form-group">
+			<label for="readingPage" th:text="#{readingPage}"></label><br>
+			<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{readingPage}">
+			<div class="invalid-feedback" th:errors="*{readingPage}"></div>
+		</div>
 		<div>
 			<input class="register" type="submit" value="1件登録">
 		</div>

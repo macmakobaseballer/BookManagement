@@ -12,7 +12,7 @@ PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS reading_status(
-id INT,
+id INT AUTO_INCREMENT,
 reading_page INT DEFAULT '0',
 update_date DATE DEFAULT (CURRENT_DATE),
 PRIMARY KEY(id)

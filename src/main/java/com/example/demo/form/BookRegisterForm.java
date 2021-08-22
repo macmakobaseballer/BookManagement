@@ -22,5 +22,7 @@ public class BookRegisterForm {
 
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private LocalDate registerDate;
+	
+	private int readingPage;
 
 }

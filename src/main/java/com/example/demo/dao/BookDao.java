@@ -21,6 +21,9 @@ public interface BookDao {
 
 	//1件登録
 	void insertOne(Book book);
+	
+	//1件登録
+	void insertOneStatus(Book book);
 
 	//1件更新（ページ数）
 	void updateOne(@Param("id") int id,
