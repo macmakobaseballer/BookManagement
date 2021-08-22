@@ -11,8 +11,7 @@
 		id,
 		book_name,
 		volume_num,
-		author_name,
-		register_date
+		author_name
 		FROM
 		booktable
 		WHERE
@@ -44,4 +43,33 @@
 		#{authorName}
 		)
 	</insert>
+	
+	<!-- 1件検索（詳細） -->
+	<select id="findByIdDetail" resultType="com.example.demo.entity.Book">
+		SELECT
+		booktable.id,
+		booktable.book_name,
+		booktable.volume_num,
+		booktable.author_name,
+		booktable.register_date,
+		reading_status.reading_page,
+		reading_status.update_date
+		FROM
+		booktable
+		LEFT JOIN reading_status
+		ON
+		booktable.id = reading_status.id
+		WHERE
+		booktable.id = #{id}
+	</select>
+	
+	<update id="updateOne">
+		UPDATE
+			reading_status
+		SET
+			reading_page = #{readingPage},
+			update_date = CURRENT_DATE
+		WHERE
+		 	 id = #{id}
+	</update>
 </mapper>

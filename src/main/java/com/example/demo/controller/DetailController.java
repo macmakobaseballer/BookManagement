@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Book;
@@ -28,7 +29,7 @@ public class DetailController {
 			@PathVariable("id") int id) {
 		
 		//ユーザーを1件取得
-		Book book = bookService.findById(id);
+		Book book = bookService.findByIdDetail(id);
 		
 		//bookをformにコピー
 		form = modelMapper.map(book,BookDetailForm.class);
@@ -39,5 +40,16 @@ public class DetailController {
 		
 		return "detail";
 	}
+	
+	@PostMapping(value ="/detail" , params = "update")
+		public String updateBook(BookDetailForm form,Model model) {
+		
+		//Bookのページ数を更新
+		bookService.updateBookOne(form.getId(),form.getReadingPage());
+		
+		//一覧画面へリダイレクト
+		return "redirect:/book/list";
+	}
+	
 	
 }

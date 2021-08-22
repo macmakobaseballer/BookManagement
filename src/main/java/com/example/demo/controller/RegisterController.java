@@ -48,7 +48,7 @@ public class RegisterController {
 		
 		Book book = modelMapper.map(form,Book.class);
 
-		bookService.insertOne(book);
+		bookService.insertBookOne(book);
 
 		return "redirect:/book";
 	}

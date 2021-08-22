@@ -14,5 +14,8 @@ public class Book {
 	private String authorName;
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private LocalDate registerDate;
+	private int readingPage;
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private LocalDate updateDate ;
 
 }
