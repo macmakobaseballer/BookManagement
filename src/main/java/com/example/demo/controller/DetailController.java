@@ -41,6 +41,7 @@ public class DetailController {
 		return "detail";
 	}
 	
+	/**データ更新処理**/
 	@PostMapping(value ="/detail" , params = "update")
 		public String updateBook(BookDetailForm form,Model model) {
 		
@@ -51,5 +52,32 @@ public class DetailController {
 		return "redirect:/book/list";
 	}
 	
+	/**データ削除処理**/
+	@PostMapping(value = "/detail" , params = "delete")
+		public String deleteBook(BookDetailForm form, Model model) {
+		
+		//Bookデータを一件削除
+		bookService.deleteBookOne(form.getId());
+		
+		//一覧画面へリダイレクト
+		return "redirect:/book/list";
+	}
+	
+	/**データ移動処理**/
+	@PostMapping(value = "/detail", params = "finish")
+		public String finishBook(Book book ,BookDetailForm form, Model model) {
+		
+		//Bookデータをfinishテーブルに移動
+		bookService.insertFinishOne(book ,form.getId());
+		
+		//Bookデータを一件削除
+		bookService.deleteBookOne(form.getId());
+		
+		//一覧画面へリダイレクト
+		return "redirect:/book/list";
+	}
+
+	
+
 	
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- CSS読込 -->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<title th:text="${title}">title</title>
+<link href="/css/indexstyle.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+<body>
+	<p>読了本一覧</p>
+	<div>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>書籍名</th>
+				<th>巻/版</th>
+				<th>著者名</th>
+			</tr>
+			<tr th:each="bookFinish:${bookFinishList}" th:object="${bookFinish}">
+				<td th:text="*{id}">id</td>
+				<td th:text="*{bookName}">書籍名</td>
+				<td th:text="*{volumeNum}">巻/版</td>
+				<td th:text="*{authorName}">著書名</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

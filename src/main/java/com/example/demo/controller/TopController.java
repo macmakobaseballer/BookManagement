@@ -21,7 +21,6 @@ public class TopController {
 	private BookService bookService;
 
 
-
 	@RequestMapping("")
 	public String index(BookSearchForm bookForm,Model model) {
 		//タイトル

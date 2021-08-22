@@ -30,6 +30,17 @@
 		booktable
 	</select>
 
+	<!-- 全件検索 -->
+	<select id="findAllFinish" resultType="com.example.demo.entity.BookFinish">
+		SELECT
+		id,
+		book_name,
+		volume_num,
+		author_name,
+		finish_date
+		FROM
+		finish_read
+	</select>
 	<!-- ユーザー1件登録 -->
 	<insert id="insertOne">
 		INSERT INTO booktable(
@@ -45,6 +56,7 @@
 		
 	</insert>
 	
+	<!-- 1件登録（ページ数） -->
 	<insert id="insertOneStatus">
 		INSERT INTO reading_status(
 		reading_page
@@ -54,6 +66,25 @@
 		)
 	</insert>
 	
+	<!-- 1件登録（読了テーブル） -->
+	<insert id="insertOneFinish">
+		INSERT INTO finish_read(
+		id,
+		book_name,
+		volume_num,
+		author_name
+		)
+		SELECT
+		id,
+		book_name,
+		volume_num,
+		author_name
+		FROM
+		booktable
+		WHERE
+		booktable.id = #{id}
+	</insert>
+
 	<!-- 1件検索（詳細） -->
 	<select id="findByIdDetail" resultType="com.example.demo.entity.Book">
 		SELECT
@@ -73,6 +104,7 @@
 		booktable.id = #{id}
 	</select>
 	
+	<!-- 1件更新 -->
 	<update id="updateOne">
 		UPDATE
 			reading_status
@@ -82,4 +114,17 @@
 		WHERE
 		 	 id = #{id}
 	</update>
+	
+	<!-- 1件削除 -->
+	<delete id="deleteOne">
+		DELETE
+			bt , rs
+		FROM
+		booktable AS bt
+		LEFT JOIN reading_status AS rs
+		ON
+		bt.id = rs.id
+		WHERE
+		bt.id = #{id}		
+	</delete>
 </mapper>
